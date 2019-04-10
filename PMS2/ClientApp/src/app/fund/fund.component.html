@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="offset-lg-2 col-lg-8">
+      <div class="card">
+          <div class="card-header card-header-primary">
+            <h4 class="card-title">Manage Funds</h4>
+            <p class="card-category">Add or Remove funds from portfolio</p>
+          </div>
+          <div class="card-body" >
+            <form autocomplete="off" novalidate>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Portfolio Name</label>
+                  <select [(ngModel)]="selectedPortfolio" class="form-control">
+                    <option *ngFor="let p of portfolioList" [ngValue]="p.PortfolioId">{{p.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="form-group">
+                  <label class="bmd-label-floating" >Funds</label>
+                  <input type="number" formControlName="startAmount" class="form-control" 
+                    placeholder="Enter Funds to Add or Remove" />
+                  </div>
+                </div>
+            </div>
+            </form>
+            <div class="row">
+                <div class="offset-lg-4" >
+                  <button type="submit" class="btn btn-primary pull-right" 
+                  >Add Funds</button>
+                </div>
+
+                <div class="offset-lg-1" >
+                    <button type="submit" class="btn btn-primary pull-right" 
+                    >Remove Funds</button>
+                  </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>

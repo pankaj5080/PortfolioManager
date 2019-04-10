@@ -1,0 +1,288 @@
+<div class="col-lg-9 offset-1 card card-chart">
+  <div class="row">
+    <div class="" style="padding: 20px;">
+      <h4 class="card-title">
+        FY :
+      </h4>
+    </div>
+    <div class="col-lg-2 card-body">
+      <p class="card-title">
+        <select [ngModel]="selectedFinancialYear" class="form-control" (ngModelChange)="yearChanged($event)">
+          <option *ngFor="let p of financialYears" [ngValue]="p">{{p}}</option>
+        </select>
+      </p>
+    </div>
+    <div class="" style="padding: 20px;">
+      <h4 class="card-title">
+        Portfolio :
+      </h4>
+    </div>
+    <div class="col-lg-2 card-body">
+      <p class="card-title">
+        <select [ngModel]="selectedPortfolio" class="form-control" (ngModelChange)="portfolioChanged($event)">
+          <option *ngFor="let p of portfolioList" [ngValue]="p.portfolioId">{{p.name}}</option>
+        </select>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          April
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          May
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          June
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style="margin-left: 70px;">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          Q1
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+      <div class="">
+        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; padding-bottom: 20px; text-align:center">
+          {{profitNLoss?.apr | currencyFormat}}
+        </h3>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.may | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.jun | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.apr + profitNLoss?.may + profitNLoss?.jun | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          July
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          August
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          September
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style="margin-left: 70px;">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          Q2
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+      <div class="">
+        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
+          {{profitNLoss?.jul | currencyFormat}}
+        </h3>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.aug | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.sep | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.jul + profitNLoss?.aug + profitNLoss?.sep | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          October
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          November
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          December
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style="margin-left: 70px;">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          Q3
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+      <div class="">
+        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
+          {{profitNLoss?.oct | currencyFormat}}
+        </h3>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.nov | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.dec | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.oct + profitNLoss?.nov + profitNLoss?.dec | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          January
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          February
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          March
+        </h5>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style="margin-left: 70px;">
+      <div class="card-body">
+        <h5 class="card-title" style="text-align:center">
+          Q4
+        </h5>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-lg-12 offset-lg-1">
+  <div class="row">
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+      <div class="">
+        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
+          {{profitNLoss?.jan | currencyFormat}}
+        </h3>
+      </div>
+    </div>
+    <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.feb | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.mar | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+      <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
+        <div class="">
+          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+            {{profitNLoss?.jan + profitNLoss?.feb + profitNLoss?.mar | currencyFormat}}
+          </h3>
+        </div>
+      </div>
+  </div>
+</div>

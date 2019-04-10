@@ -1,0 +1,131 @@
+<div class="row">
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">Q</i>
+        </div>
+        <p class="card-category">Current Quarter</p>
+        <h3 class="card-title">
+          {{dashboard?.quarterProfit | currencyFormat}} ₹
+        </h3>
+      </div>
+      <!-- <div class="card-footer">
+        <div class="stats">
+          <a>#of trades: 20</a>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-success card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">Y</i>
+        </div>
+        <p class="card-category">Current Year</p>
+        <h3 class="card-title">{{dashboard?.yearProfit | currencyFormat}} ₹</h3>
+      </div>
+      <!-- <div class="card-footer">
+        <div class="stats">
+          <a>#of trades: 50</a>
+          <span></span>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-danger card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">O</i>
+        </div>
+        <p class="card-category">Overall</p>
+        <h3 class="card-title">{{dashboard?.overallProfit | currencyFormat}} ₹</h3>
+      </div>
+      <!-- <div class="card-footer">
+        <div class="stats">
+          <a>#of trades: 70</a>
+        </div>
+      </div> -->
+    </div>
+  </div>
+  <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-header card-header-warning card-header-icon">
+          <div class="card-icon">
+            <i class="material-icons">M</i>
+          </div>
+          <p class="card-category">Total trading Funds</p>
+          <h3 class="card-title">
+            {{dashboard?.tradingFunds | currencyFormat}} ₹
+          </h3>
+        </div>
+        <!-- <div class="card-footer">
+          <div class="stats">
+            <a> .</a>
+          </div>
+        </div> -->
+      </div>
+    </div>
+    
+</div>
+<div class="row">
+<div class="col-lg-6">
+    <div class="card card-stats">
+        <div class="card-header card-header-danger card-header-icon header">
+          <p class="card-category" style="text-align: center; font-weight:400; font-size: large">Profit Chart</p>
+        </div>
+        <div style="padding: 10px;">
+            <canvas baseChart style="height:500px;"
+            [datasets]="barChartData"
+            [labels]="barChartLabels"
+            [options]="barChartOptions"
+            [legend]="barChartLegend"
+            [chartType]="barChartType">
+          </canvas>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="card card-stats">
+        <div class="card-header card-header-danger card-header-icon header">
+            <p class="card-category" style="text-align: center; font-weight:400; font-size: large">Recent Completed Trades</p>
+          </div>
+          <div>
+              <div class="table-responsive" style="padding: 10px;">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <tr><th>
+                        Sr.No
+                      </th>
+                      <th>
+                        Stock Name
+                      </th>
+                      <th>
+                        Buy Price
+                      </th>
+                      <th>
+                        Sell Price
+                      </th>
+                      <th>
+                        Profit/Loss
+                      </th>
+                    </tr></thead>
+                    <tbody>
+                      <tr *ngFor="let trade of dashboard?.lastFiveTrades; let idx = index">
+                        <td>{{idx + 1}}</td>
+                        <td>{{trade.stockName}}</td>
+                        <td>{{trade.buyPrice | currencyFormat}}</td>
+                        <td>{{trade.sellPrice | currencyFormat}}</td>
+                        <td [class.green]="trade.profit > 0" [class.red]="trade.profit < 0">
+                          {{trade.profit | currencyFormat}}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          </div>
+    </div>
+</div>
+</div>

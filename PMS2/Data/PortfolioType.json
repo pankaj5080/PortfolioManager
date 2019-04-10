@@ -1,0 +1,10 @@
+[
+  {
+    "PortfolioTypeId": "1",
+    "Name": "SingleShot"
+  },
+  {
+    "PortfolioTypeId": "2",
+    "Name": "Position"
+  }
+]

@@ -1,0 +1,12 @@
+<div class="col-md-12 row">
+  <div class="col-md-4" *ngFor="let portfolio of portfolios" [hidden]="portfolios.length === 0">
+    <portfolio-card [portfolio]="portfolio"></portfolio-card>
+  </div>
+  <div class="col-md-12" [hidden]="portfolios.length > 0">
+    <div class="card card-chart">
+      <h5 class="card-body">
+        There are no portfolios created. Create new portfolio to start investing.
+      </h5>
+    </div>
+  </div>
+</div>

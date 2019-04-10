@@ -1,0 +1,22 @@
+<div class="card card-chart">
+    <div class="card-header card-header-primary">
+      <div class="row">
+        <h4 class="card-title col-lg-10">{{portfolio.name}}</h4>
+        <h4 class="text-right" [routerLink]='["/edit-portfolio", portfolio.portfolioId]' >
+          <i class="fa fa-edit">
+          </i>
+        </h4>
+        <h4 class="text-right" style="padding-left: 10px;" (click)="addTrade(portfolio.portfolioId)">
+          <a class="fa fa-plus">
+          </a>
+        </h4>
+      </div>
+    </div>
+    <div class="card-body">
+      <p class="">
+        <h5>Type of Portfolio: {{portfolio.portfolioTypeDescription}}</h5>
+        <h5>Total Profit: {{portfolio.profit}}</h5>
+        <h5># trades taken: {{portfolio.numberOfTrades}}</h5>
+    </div>
+    
+  </div>

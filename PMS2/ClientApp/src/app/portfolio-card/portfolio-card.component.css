@@ -1,0 +1,17 @@
+.text-right{
+    float: right;
+}
+
+p{
+    margin-bottom: 5px;
+}
+
+.card-title{
+    padding-left: 25px;
+    padding-top: 10px;
+}
+
+.card [class*="card-header-"]:not(.card-header-icon):not(.card-header-text):not(.card-header-image) {
+  padding: 5px;
+}
+

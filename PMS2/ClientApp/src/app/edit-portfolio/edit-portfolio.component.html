@@ -1,0 +1,179 @@
+<form>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">{{portfolio?.name}}</h4>
+          <p class="card-category">Details of the Portfolio</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-3">
+              <div class="card">
+                <div class="card-body">
+                  <h4>Account Value: {{portfolio?.accountValue | currencyFormat}} ₹</h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="card">
+                <div class="card-body">
+                  <h4 [ngClass]="{ green: portfolio?.profit > 0, red: portfolio?.profit < 0 }">
+                    Net Profit: {{portfolio?.profit | currencyFormat}} ₹
+                  </h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="card">
+                <div class="card-body">
+                  <h4 [ngClass]="{ green: portfolio?.profit > 0, red: portfolio?.profit < 0 }">
+                    Percentage Gain: {{portfolio?.percentageGain}}%
+                  </h4>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-3">
+              <div class="card">
+                <div class="card-body">
+                  <h4>
+                    Position Size: {{portfolio?.positionValue | currencyFormat}} ₹
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-6">
+              <div>
+                <div style="display: block">
+                  <canvas baseChart
+                          [datasets]="barChartData"
+                          [labels]="barChartLabels"
+                          [options]="barChartOptions"
+                          [legend]="barChartLegend"
+                          [chartType]="barChartType"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6" *ngIf="portfolio && portfolio.portfolioTypeId == 2">
+              <div class="table-responsive" style="padding: 10px;">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th>
+                        Sr.No
+                      </th>
+                      <th>
+                        Stock Name
+                      </th>
+                      <th>
+                        Amount
+                      </th>
+                      <th>
+                        Buy
+                      </th>
+                      <th>
+                        Quantity
+                      </th>
+                      <th style="text-align:center">
+                        Actions
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let trade of openPositions; let idx = index">
+                      <td>{{idx + 1}}</td>
+                      <td>{{trade.stockName}}</td>
+                      <td>{{portfolio.positionValue | currencyFormat}}</td>
+                      <td>{{trade.buyPrice | currencyFormat}}</td>
+                      <td>{{trade.quantity | currencyFormat}}</td>
+                      <td class="text-primary" style="font-size:medium; text-align:center">
+                        <i class="fa fa-minus-circle" style="padding-left:25px;" (click)="editTrade(trade.tradeId)"></i>
+                        <i class="fa fa-edit" style="padding-left:15px;" (click)="editTrade(trade.tradeId)"></i>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="col-lg-6" *ngIf="portfolio && portfolio.portfolioTypeId == 1">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4>Current Stock:</h4>
+                      <h5>{{portfolio.openPosition[0]?.stockName}}</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4>Buy Price:</h4>
+                      <h5>{{portfolio.openPosition[0]?.buyPrice | currencyFormat}}</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h4># of completed trades:</h4>
+                      <h4>{{portfolio.completedTrades?.length}}</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <button class="btn btn-primary" (click)="editTrade(portfolio.openPosition[0]?.tradeId)"
+                      [disabled]="portfolio.openPosition.length == 0">
+                Square Off
+              </button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <h5 style="text-align: center">Portfolio History</h5>
+              <div class="table-responsive" style="padding: 10px;">
+                <table class="table">
+                  <thead class=" text-primary">
+                    <tr>
+                      <th>Buy Date</th>
+                      <th>Sell Date</th>
+                      <th>Stock Name</th>
+                      <th>Buy Price</th>
+                      <th>Sell Price</th>
+                      <th>Quantity</th>
+                      <th>Percentage Gain</th>
+                      <th>Number of days</th>
+                      <th>Profit</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let stock of completedTrades; let idx = index">
+                      <th>{{stock.buyDate | date:'dd/MM/yy'}}</th>
+                      <th>{{stock.sellDate | date:'dd/MM/yy'}}</th>
+                      <th>{{stock.stockName}}</th>
+                      <th>{{stock.buyPrice | currencyFormat}}</th>
+                      <th>{{stock.sellPrice | currencyFormat}}</th>
+                      <th>{{stock.quantity | currencyFormat}}</th>
+                      <th [class.green]="stock?.percentageGain > 0" [class.red]="stock?.percentageGain < 0">
+                        {{stock.percentageGain}} %
+                      </th>
+                      <th>{{stock.holdingDays}}</th>
+                      <th>{{stock.profit | currencyFormat}}</th>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

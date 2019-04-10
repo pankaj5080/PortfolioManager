@@ -1,0 +1,32 @@
+em {
+    float: right; 
+    color:#E05C65; 
+    padding-left: 10px;
+}
+.error input {
+    background-color: #E3C3C5
+}
+.error ::-webkit-input-placeholder { 
+    color: #999;
+}  
+.option{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+select.form-control:not([size]):not([multiple]) {
+  height: auto;
+}
+.form-control[disabled] {
+  background-color: silver;
+}
+table{
+  font-size:small;
+
+}
+.green{
+  color: green;
+}
+.red{
+  color: red;
+}
+

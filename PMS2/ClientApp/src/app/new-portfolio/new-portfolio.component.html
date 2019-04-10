@@ -1,0 +1,56 @@
+<div class="row">
+  <div class="offset-lg-2 col-lg-8">
+    <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">Create Portfolio</h4>
+          <p class="card-category">Enter details of new Portfolio</p>
+        </div>
+        <div class="card-body" >
+          <form [formGroup]="portfolioForm" autocomplete="off" novalidate (ngSubmit)="createPortfolio(portfolioForm.value)">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group" [ngClass]="{error: !isPortfolioNameValid()}">
+                  <label class="bmd-label-floating">Portfolio Name</label>
+                  <em *ngIf="!isPortfolioNameValid()">Required</em>
+                  <input type="text" formControlName="portfolioName" class="form-control" 
+                    placeholder="Enter Portfolio Name" />
+                </div>
+              </div>
+              <div class="col-lg-6">
+                  <div class="form-group" [ngClass]="{error: !isStartAmountValid()}">
+                  <label class="bmd-label-floating" >Cash Deployed</label>
+                  <em *ngIf="!isStartAmountValid()">Required</em>
+                  <input type="number" formControlName="startAmount" class="form-control" 
+                    placeholder="Enter Initial Investment Value" />
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">Type of portfolio</label>
+                  <!-- <input type="text" class="form-control" /> -->
+                  <select formControlName="selectedPortfolioType" class="form-control">
+                    <option *ngFor="let p of portfolioTypes" [ngValue]="p.portfolioTypeId">{{p.name}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="form-group">
+                  <label class="bmd-label-floating">No of Positions</label>
+                  <input type="text" class="form-control" formControlName="position" />
+                </div>
+              </div>
+            </div>
+          </form>
+          
+          <div class="row">
+              <div class="offset-lg-5" >
+                <button type="submit" class="btn btn-primary pull-right" 
+                (click)="createPortfolio(portfolioForm.value)">Create Portfolio</button>
+              </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
