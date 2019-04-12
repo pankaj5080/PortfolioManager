@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
         this.networthBarChartLabels = [0]
 
         result.networths.forEach((networth: Networth) => {
-          this.networthBarChartData[0].data.push(networth.total);
+          this.networthBarChartData[0].data.push(networth.total / 100000);
           this.networthBarChartLabels.push(networth.month);
         });
 
