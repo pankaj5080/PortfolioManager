@@ -1,4 +1,5 @@
 import { Trade } from "./Trade";
+import { Networth } from "./Networth";
 
 export class Dashboard {
   quarterProfit: number;
@@ -7,4 +8,5 @@ export class Dashboard {
   tradingFunds: number;
   allTrades: Trade[];
   lastFiveTrades: Trade[];
+  networths: Networth[];
 }

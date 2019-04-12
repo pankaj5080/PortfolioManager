@@ -93,6 +93,9 @@ namespace PMS.Api
         [Route("GetDashboardDetails")]
         public Dashboard GetDashboardDetails()
         {
+            var networthJson = System.IO.File.ReadAllText("data/Networth.json");
+            var latestNetworth = JsonConvert.DeserializeObject<List<Networth>>(networthJson);
+
             var tradeJson = System.IO.File.ReadAllText("data/Trade.json");
             var completedTrades = JsonConvert.DeserializeObject<List<Trade>>(tradeJson)
                 .Where(t => t.SellDate.HasValue)
@@ -128,6 +131,20 @@ namespace PMS.Api
 
             var tradingFunds = GetTradingFunds();
 
+            var networths = latestNetworth.Select(networth => new NetworthDashboard
+            {
+                Month = networth.Date.Month.ToString() + "-" + networth.Date.Year.ToString(),
+                FivePaisa = networth.FivePaisa,
+                Icici = networth.Icici,
+                Iim = networth.IIM,
+                Samco = networth.Samco,
+                Upstox = networth.Upstox,
+                Zerodha = networth.Zerodha,
+                Loan = networth.Loan,
+                Total = networth.FivePaisa + networth.Icici + networth.IIM +
+                networth.Samco + networth.Upstox + networth.Zerodha - networth.Loan
+            }).ToList();
+
             return new Dashboard
             {
                 AllTrades = completedTrades.ToList(),
@@ -136,6 +153,7 @@ namespace PMS.Api
                 QuarterProfit = qtrProfits,
                 TradingFunds = tradingFunds,
                 YearProfit = yearProfits,
+                Networths = networths
             };
         }
 

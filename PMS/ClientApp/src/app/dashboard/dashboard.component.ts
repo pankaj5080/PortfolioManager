@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PortfolioService } from '../service/portfolio-service.service';
 import { Dashboard } from '../class/Dashboard';
+import { Networth } from '../class/Networth';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +14,10 @@ export class DashboardComponent implements OnInit {
   barChartType = 'line';
   barChartLegend = false;
   barChartData = [
+    { data: [], label: 'Profit' }
+  ];
+  networthBarChartLabels = [];
+  networthBarChartData = [
     { data: [], label: 'Profit' }
   ];
   barChartOptions = {
@@ -34,6 +39,14 @@ export class DashboardComponent implements OnInit {
           graph = graph + trade.profit;
           this.barChartData[0].data.push(graph);
           this.barChartLabels.push(index + 1);
+        });
+
+        this.networthBarChartData[0].data = [0];
+        this.networthBarChartLabels = [0]
+
+        result.networths.forEach((networth: Networth) => {
+          this.networthBarChartData[0].data.push(networth.total);
+          this.networthBarChartLabels.push(networth.month);
         });
 
       });

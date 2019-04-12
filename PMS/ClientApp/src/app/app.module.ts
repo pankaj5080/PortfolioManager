@@ -21,6 +21,7 @@ import { ProfitAndLossComponent } from './profit-and-loss/profit-and-loss.compon
 import { NewTradeComponent } from './new-trade/new-trade.component'
 import { EditPortfolioComponent } from './edit-portfolio/edit-portfolio.component';
 import { DashboardComponent } from './dashboard/dashboard.component'
+import { NetworthComponent } from './networth/networth.component'
 
 import { PortfolioService } from './service/portfolio-service.service';
 import { CurrencyFormatPipe } from './pipe/currency-format.pipe';
@@ -41,7 +42,8 @@ import { CurrencyFormatPipe } from './pipe/currency-format.pipe';
     NewTradeComponent,
     EditPortfolioComponent,
     CurrencyFormatPipe,
-    DashboardComponent
+    DashboardComponent,
+    NetworthComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -59,6 +61,7 @@ import { CurrencyFormatPipe } from './pipe/currency-format.pipe';
       { path: 'funds', component: FundComponent },
       { path: 'pnl', component: ProfitAndLossComponent },
       { path: 'edit-portfolio/:id', component: EditPortfolioComponent },
+      { path: 'networth', component: NetworthComponent },
     ]),
     NgbModule.forRoot(),
     ChartsModule,

@@ -1,0 +1,82 @@
+<div class="row">
+  <div class="offset-lg-2 col-lg-8">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">Add Networth</h4>
+        <p class="card-category">Enter details of Networth</p>
+      </div>
+      <div class="card-body">
+        <form [formGroup]="networthForm" autocomplete="off" novalidate (ngSubmit)="addNetworth(networthForm.value)">
+          <div class="row">
+
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Networth Date</label>
+                <input type="date" formControlName="date" class="form-control"
+                       placeholder="Enter date" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">BlueChip</label>
+                <input type="number" formControlName="icici" class="form-control"
+                       placeholder="Bluechip investment value" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Thombya</label>
+                <input type="number" formControlName="upstox" class="form-control"
+                       placeholder="Thombya investment value" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">RockeX</label>
+                <input type="number" formControlName="zerodha" class="form-control"
+                       placeholder="RockeX investment value" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Mission</label>
+                <input type="number" formControlName="fivePaisa" class="form-control"
+                       placeholder="Mission investment value" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">IIM</label>
+                <input type="number" formControlName="iim" class="form-control"
+                       placeholder="Enter IIM value" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Trade</label>
+                <input type="number" formControlName="samco" class="form-control"
+                       placeholder="Enter Trade value" />
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="form-group">
+                <label class="bmd-label-floating">Loan</label>
+                <input type="number" formControlName="loan" class="form-control"
+                       placeholder="Enter loan value" />
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="row">
+          <div class="offset-lg-5">
+            <button type="submit" class="btn btn-primary pull-right"
+                    (click)="addNetworth(networthForm.value)">
+              Add Networth
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

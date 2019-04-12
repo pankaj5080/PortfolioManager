@@ -7,6 +7,7 @@ import { Portfolio } from '../class/Portfolio';
 import { ProfitAndLoss } from '../class/ProfitAndLoss';
 import { Trade } from '../class/Trade';
 import { Dashboard } from '../class/Dashboard'
+import { Networth } from '../class/Networth'
 
 @Injectable()
 export class PortfolioService {
@@ -14,6 +15,7 @@ export class PortfolioService {
   portfolioApi = 'api/portfolio';
   pnlApi = 'api/portfolio/getProfitDetails';
   tradeApi = 'api/trade';
+  networthApi = 'api/networth';
 
   constructor(private http: HttpClient) { }
 
@@ -54,5 +56,14 @@ export class PortfolioService {
   }
   getDashboardDetails() {
     return this.http.get<Dashboard>(this.tradeApi + "/GetDashboardDetails");
+  }
+  addNetworth(networth: Networth) {
+    return this.http.post<Portfolio>(this.networthApi, networth);
+  }
+  getAllNetworth() {
+    return this.http.get<Networth[]>(this.networthApi + "/GetAllNetwoth");
+  }
+  getLatestNetworth() {
+    return this.http.get<Networth>(this.networthApi + "/GetLatestNetwoth");
   }
 }
