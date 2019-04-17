@@ -7,10 +7,12 @@ export class CurrencyFormatPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value) {
-      var str = value.toString().indexOf('.') > -1
-        ? value.toString().substring(0, value.toString().indexOf('.')) : value.toString();
-      var prec = value.toString().indexOf('.') > -1
-        ? value.toString().substring(value.toString().indexOf('.')): '';
+      var isLoss = value < 0;
+      var valueString = isLoss ? value.toString().substring(1) : value.toString(); 
+      var str = valueString.indexOf('.') > -1
+        ? valueString.substring(0, valueString.indexOf('.')) : valueString;
+      var prec = valueString.indexOf('.') > -1
+        ? valueString.substring(valueString.indexOf('.')): '';
       var textAmount = "";
 
       if (str.length <= 3) {
@@ -28,7 +30,7 @@ export class CurrencyFormatPipe implements PipeTransform {
       if (str.length > 9) {
         textAmount = [textAmount.slice(0, textAmount.length - 12), ",", textAmount.slice(textAmount.length - 12)].join('');
       }
-      return textAmount + prec;
+      return isLoss ? '-' +  textAmount + prec : textAmount + prec;
     }
     return "0";
   }

@@ -1,1 +1,1 @@
-[{"TradeId":1,"PortfolioId":1,"StockName":"GANECOS","BuyDate":"2019-04-04T18:30:00Z","SellDate":null,"BuyPrice":340.55,"SellPrice":null,"Quantity":27,"Profit":0.0}]
+[{"TradeId":1,"PortfolioId":1,"StockName":"GANECO","BuyDate":"2019-04-04T18:30:00Z","SellDate":"2019-04-15T18:30:00Z","BuyPrice":337.85,"SellPrice":326.0,"Quantity":70,"Profit":0.0}]

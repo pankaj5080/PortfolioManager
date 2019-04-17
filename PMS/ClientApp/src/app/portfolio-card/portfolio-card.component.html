@@ -15,7 +15,7 @@
     <div class="card-body">
       <p class="">
         <h5>Type of Portfolio: {{portfolio.portfolioTypeDescription}}</h5>
-        <h5>Total Profit: {{portfolio.profit}}</h5>
+        <h5>Total Profit: {{portfolio.profit | currencyFormat}} ₹</h5>
         <h5># trades taken: {{portfolio.numberOfTrades}}</h5>
     </div>
     

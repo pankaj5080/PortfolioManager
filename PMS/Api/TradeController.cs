@@ -110,7 +110,7 @@ namespace PMS.Api
                     SellPrice = t.SellPrice.Value,
                     StockName = t.StockName,
                     TradeId = t.TradeId,
-                    Profit = (t.SellPrice.Value - t.BuyPrice) * t.Quantity
+                    Profit = Math.Round((t.SellPrice.Value - t.BuyPrice) * t.Quantity, 2)
                 }) ;
 
             var qtrMinDate = GetQuaterMinDate();
@@ -149,10 +149,10 @@ namespace PMS.Api
             {
                 AllTrades = completedTrades.ToList(),
                 LastFiveTrades = completedTrades.Take(10).ToList(),
-                OverallProfit = overallProfits,
-                QuarterProfit = qtrProfits,
-                TradingFunds = tradingFunds,
-                YearProfit = yearProfits,
+                OverallProfit = Math.Round(overallProfits, 2),
+                QuarterProfit = Math.Round(qtrProfits, 2),
+                TradingFunds = Math.Round(tradingFunds, 2),
+                YearProfit = Math.Round(yearProfits, 2),
                 Networths = networths
             };
         }

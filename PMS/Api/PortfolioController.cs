@@ -23,8 +23,10 @@ namespace PMS.Api
             portfolioList.ForEach(portfolio =>
             {
                 portfolio.NumberOfTrades = tradesList
-                .Count(x => x.PortfolioId == portfolio.PortfolioId && x.SellDate.HasValue);
-                portfolio.Profit = tradesList.Where(x => x.PortfolioId == portfolio.PortfolioId).Sum(x => x.Profit);
+                    .Count(x => x.PortfolioId == portfolio.PortfolioId && x.SellDate.HasValue);
+                portfolio.Profit = Math.Round(tradesList
+                    .Where(x => x.PortfolioId == portfolio.PortfolioId && x.SellDate.HasValue)
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2);
                 portfolio.PortfolioTypeDescription = portfolio.PortfolioTypeId == 1 ? "SingleShot" : "Position";
             });
 
