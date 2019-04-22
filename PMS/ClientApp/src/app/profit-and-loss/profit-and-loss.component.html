@@ -63,28 +63,32 @@
   <div class="row">
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
       <div class="">
-        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; padding-bottom: 20px; text-align:center">
+        <h3 class="card-title" [style.color]="getColor(profitNLoss?.apr)"
+            style="font-weight:900;  padding-top: 20px; padding-bottom: 20px; text-align:center">
           {{profitNLoss?.apr | currencyFormat}}
         </h3>
       </div>
     </div>
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.may)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.may | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.jun)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.jun | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.apr + profitNLoss?.may + profitNLoss?.jun)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.apr + profitNLoss?.may + profitNLoss?.jun | currencyFormat}}
           </h3>
         </div>
@@ -128,28 +132,32 @@
   <div class="row">
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
       <div class="">
-        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
+        <h3 class="card-title" [style.color]="getColor(profitNLoss?.jul)"
+            style="font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
           {{profitNLoss?.jul | currencyFormat}}
         </h3>
       </div>
     </div>
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.aug)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.aug | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.sep)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.sep | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.jul + profitNLoss?.aug + profitNLoss?.sep)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.jul + profitNLoss?.aug + profitNLoss?.sep | currencyFormat}}
           </h3>
         </div>
@@ -193,28 +201,32 @@
   <div class="row">
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
       <div class="">
-        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
+        <h3 class="card-title" [style.color]="getColor(profitNLoss?.oct)"
+            style="font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
           {{profitNLoss?.oct | currencyFormat}}
         </h3>
       </div>
     </div>
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.nov)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.nov | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.dec)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.dec | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.oct + profitNLoss?.nov + profitNLoss?.dec)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.oct + profitNLoss?.nov + profitNLoss?.dec | currencyFormat}}
           </h3>
         </div>
@@ -258,28 +270,32 @@
   <div class="row">
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
       <div class="">
-        <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
+        <h3 class="card-title" [style.color]="getColor(profitNLoss?.jan)"
+            style="font-weight:900;  padding-top: 20px; text-align:center; padding-bottom: 20px;">
           {{profitNLoss?.jan | currencyFormat}}
         </h3>
       </div>
     </div>
     <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.feb)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.feb | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.mar)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.mar | currencyFormat}}
           </h3>
         </div>
       </div>
       <div class="col-lg-2 card card-chart" style=" margin-top: 5px; margin-left: 70px;">
         <div class="">
-          <h3 class="card-title" style="color: green; font-weight:900;  padding-top: 20px; text-align:center">
+          <h3 class="card-title" [style.color]="getColor(profitNLoss?.jan + profitNLoss?.feb + profitNLoss?.mar)"
+            style="font-weight:900;  padding-top: 20px; text-align:center">
             {{profitNLoss?.jan + profitNLoss?.feb + profitNLoss?.mar | currencyFormat}}
           </h3>
         </div>

@@ -139,42 +139,42 @@ namespace PMS.Api
 
             return new ProfitAndLossViewModel()
             {
-                Apr = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 4, 1, 0, 0, 0) &&
+                Apr = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 4, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 4, 30, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                May = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 5, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                May = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 5, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 5, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Jun = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 6, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Jun = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 6, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 6, 30, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Jul = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 7, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Jul = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 7, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 7, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Aug = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 8, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Aug = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 8, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 8, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Sep = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 9, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Sep = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 9, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 9, 30, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Oct = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 10, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Oct = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 10, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 10, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Nov = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 11, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Nov = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 11, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 11, 30, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Dec = tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 12, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Dec = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(startYear, 12, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(startYear, 12, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Jan = tradesList.Where(x => x.SellDate.Value >= new DateTime(endYear, 1, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Jan = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(endYear, 1, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(endYear, 1, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Feb = tradesList.Where(x => x.SellDate.Value >= new DateTime(endYear, 2, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Feb = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(endYear, 2, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(endYear, 2, 28, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),
-                Mar = tradesList.Where(x => x.SellDate.Value >= new DateTime(endYear, 3, 1, 0, 0, 0) &&
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2),
+                Mar = Math.Round(tradesList.Where(x => x.SellDate.Value >= new DateTime(endYear, 3, 1, 0, 0, 0) &&
                     x.SellDate.Value <= new DateTime(endYear, 3, 31, 23, 59, 59))
-                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity),   
+                    .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2)
             };
         }
     }

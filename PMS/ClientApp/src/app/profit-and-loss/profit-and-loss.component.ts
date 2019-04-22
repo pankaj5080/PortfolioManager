@@ -44,5 +44,15 @@ export class ProfitAndLossComponent implements OnInit {
       });
     }
   }
+  getColor(profit) {
+    let color = "black"
+    if (profit && profit > 0) {
+      color = "green";
+    }
+    else if (profit && profit < 0) {
+      color = "red";
+    }
+    return color
+  }
 
 }

@@ -2,7 +2,12 @@
     margin-right: 15px;
     margin-bottom: 5px;
 }
-
 select.form-control:not([size]):not([multiple]) {
   height: auto;
+}
+.green {
+  color: green;
+}
+.red {
+  color: red;
 }
