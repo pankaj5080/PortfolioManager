@@ -11,7 +11,7 @@ namespace PMS.Viewmodel
         public DateTime? SellDate { get; set; }
         public double BuyPrice { get; set; }
         public double? SellPrice { get; set; }
-        public int Quantity { get; set; }
+        public double Quantity { get; set; }
         public double Profit { get; set; }
     }
 }
