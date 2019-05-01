@@ -99,7 +99,7 @@ namespace PMS.Api
             var tradeJson = System.IO.File.ReadAllText("data/Trade.json");
             var completedTrades = JsonConvert.DeserializeObject<List<Trade>>(tradeJson)
                 .Where(t => t.SellDate.HasValue)
-                .OrderByDescending(t => t.SellDate.Value)
+                .OrderBy(t => t.SellDate.Value)
                 .Select(t => new Trade
                 {
                     BuyDate = t.BuyDate,
@@ -148,7 +148,7 @@ namespace PMS.Api
             return new Dashboard
             {
                 AllTrades = completedTrades.ToList(),
-                LastFiveTrades = completedTrades.Take(10).ToList(),
+                LastFiveTrades = completedTrades.Take(10).OrderByDescending(c => c.SellDate.Value).ToList(),
                 OverallProfit = Math.Round(overallProfits, 2),
                 QuarterProfit = Math.Round(qtrProfits, 2),
                 TradingFunds = Math.Round(tradingFunds, 2),
