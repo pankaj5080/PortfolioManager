@@ -7,12 +7,15 @@ export class CurrencyFormatPipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
     if (value) {
+      if(value.toPrecision){
+        //value = value.toPrecision(2);
+      }
       var isLoss = value < 0;
       var valueString = isLoss ? value.toString().substring(1) : value.toString(); 
       var str = valueString.indexOf('.') > -1
         ? valueString.substring(0, valueString.indexOf('.')) : valueString;
       var prec = valueString.indexOf('.') > -1
-        ? valueString.substring(valueString.indexOf('.')): '';
+        ? valueString.substring(valueString.indexOf('.'), valueString.indexOf('.') + 3): '';
       var textAmount = "";
 
       if (str.length <= 3) {

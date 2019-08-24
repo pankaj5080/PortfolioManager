@@ -147,8 +147,8 @@ namespace PMS.Api
 
             return new Dashboard
             {
-                AllTrades = completedTrades.ToList(),
-                LastFiveTrades = completedTrades.Take(10).OrderByDescending(c => c.SellDate.Value).ToList(),
+                AllTrades = completedTrades.Where(t => t.PortfolioId != 7).ToList(),
+                LastFiveTrades = completedTrades.Where(t => t.PortfolioId != 7).OrderByDescending(c => c.SellDate.Value).Take(10).ToList(),
                 OverallProfit = Math.Round(overallProfits, 2),
                 QuarterProfit = Math.Round(qtrProfits, 2),
                 TradingFunds = Math.Round(tradingFunds, 2),

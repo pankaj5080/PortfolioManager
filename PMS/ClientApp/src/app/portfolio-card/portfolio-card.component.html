@@ -14,9 +14,10 @@
     </div>
     <div class="card-body">
       <p class="">
-        <h5>Type of Portfolio: {{portfolio.portfolioTypeDescription}}</h5>
+        <h5 style="display:none;">Type of Portfolio: {{portfolio.portfolioTypeDescription}}</h5>
         <h5>Total Profit: {{portfolio.profit | currencyFormat}} ₹</h5>
-        <h5># trades taken: {{portfolio.numberOfTrades}}</h5>
-    </div>
+        <h5 style="display:none;"># trades taken: {{portfolio.numberOfTrades}}</h5>
+        <h5 [ngClass]="{ green: portfolio?.percentageGain > 0, red: portfolio?.percentageGain < 0 }">Percentage Gain: {{portfolio.percentageGain}}%</h5>
+</div>
     
   </div>

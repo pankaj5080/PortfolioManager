@@ -20,14 +20,20 @@ namespace PMS.Api
             var tradeJson = System.IO.File.ReadAllText("data/Trade.json");
             var tradesList = JsonConvert.DeserializeObject<List<Trade>>(tradeJson);
 
+            var fundJson = System.IO.File.ReadAllText("data/Fund.json");
+            var fundList = JsonConvert.DeserializeObject<List<Fund>>(fundJson);
+
             portfolioList.ForEach(portfolio =>
             {
+                var addedFunds = fundList.Where(f => f.PortfolioId == portfolio.PortfolioId).Sum(f => f.Amount);
+
                 portfolio.NumberOfTrades = tradesList
                     .Count(x => x.PortfolioId == portfolio.PortfolioId && x.SellDate.HasValue);
                 portfolio.Profit = Math.Round(tradesList
                     .Where(x => x.PortfolioId == portfolio.PortfolioId && x.SellDate.HasValue)
                     .Sum(x => (x.SellPrice.Value - x.BuyPrice) * x.Quantity), 2);
                 portfolio.PortfolioTypeDescription = portfolio.PortfolioTypeId == 1 ? "SingleShot" : "Position";
+                portfolio.PercentageGain = Math.Round(portfolio.Profit / (portfolio.InitialAmount + addedFunds) * 100, 2);
             });
 
             return portfolioList;
@@ -78,13 +84,13 @@ namespace PMS.Api
             var profit = Math.Round(tradesList.Where(t => t.PortfolioId == id && t.SellDate.HasValue)
                 .Sum(t => ((t.SellPrice.Value - t.BuyPrice) * t.Quantity)), 2);
 
-            portfolio.PositionValue = Math.Round(portfolio.Positions.HasValue 
-                ? ((portfolio.InitialAmount + addedFunds + profit) / portfolio.Positions.Value)
+            portfolio.PositionValue = Math.Round(portfolio.Position.HasValue 
+                ? ((portfolio.InitialAmount + addedFunds + profit) / portfolio.Position.Value)
                 : (portfolio.InitialAmount + addedFunds + profit), 2);
 
             portfolio.Profit = profit;
             portfolio.AccountValue = portfolio.InitialAmount + addedFunds + profit;
-            portfolio.PercentageGain = Math.Round(portfolio.Profit / portfolio.AccountValue * 100, 2);
+            portfolio.PercentageGain = Math.Round(portfolio.Profit / (portfolio.InitialAmount + addedFunds) * 100, 2);
 
             return portfolio;
         }

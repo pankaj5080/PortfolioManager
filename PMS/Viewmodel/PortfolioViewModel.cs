@@ -9,7 +9,7 @@ namespace PMS.Viewmodel
         public int PortfolioTypeId { get; set; }
         public string PortfolioTypeDescription { get; set; }
         public long InitialAmount { get; set; }
-        public int? Positions { get; set; }
+        public int? Position { get; set; }
         public double PositionValue { get; set; }
         public double Profit { get; set; }
         public double PercentageGain { get; set; }
